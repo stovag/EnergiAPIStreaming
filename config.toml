@@ -1,0 +1,12 @@
+title = "Configuation for the EnergyAPI modelling app"
+
+[energy_api]
+directory = "/home/stovag/big_data/data/"
+datetime_format = "%Y-%m-%dT%H:%M"
+date_format = "%Y-%m-%d"
+num_intevals = 5
+interval = "minutes"
+
+[kafka]
+bootstrap_server = "localhost:9092"
+topic = "energy_api"

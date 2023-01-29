@@ -1,0 +1,10 @@
+[energy_api]
+directory = "/dir_data_will_be_saved_to/"
+datetime_format = "%Y-%m-%dT%H:%M:%S"
+date_format = "%Y-%m-%d"
+num_intevals = 5
+interval = "minutes"
+
+[kafka]
+bootstrap_server = "server:port"
+topic = "a_topic"
