@@ -1,0 +1,23 @@
+name: Python Linter
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - dev
+      - main
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2  
+    - name: Python Linter
+      uses: sunnysid3up/python-linter@master
+      with:
+        source: "energy_den"
+        mypy-options: "--ignore-missing-imports --show-error-codes"
+        isort-options: "--profile black"
+        django: false
