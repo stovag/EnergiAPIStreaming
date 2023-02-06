@@ -60,4 +60,19 @@ with DAG(
         dag=dag,
     )
 
+    def stream_to_mysql():
+
+        bootstrap_server = config["kafka"]["bootstrap_server"]
+        topic = config["kafka"]["topic"]
+
+        json_filepath = Variable.get("file_created")
+        json_data = ed.deserialize_json(json_filepath)
+        json_data_string = ed.serialize_json(json_data)
+        ed.send_data_to_kafka(bootstrap_server, topic, json_data_string)
+
+    stream_data_to_kafka = PythonOperator(
+        task_id="stream_energy_data_to_kafka",
+        python_callable=stream_to_kafka,
+        dag=dag,
+    )
     save_data_to_file >> stream_data_to_kafka

@@ -45,3 +45,5 @@ def send_data_to_kafka(bootstrap_server, topic, json_data_string):
     """
     producer = KafkaProducer(bootstrap_servers=[bootstrap_server])
     producer.send(topic, json_data_string)
+    producer.flush()
+    producer.close()
